@@ -50,6 +50,13 @@ view: orders {
     required_access_grants: [test]
   }
 
+dimension: test {
+    type: string
+    sql: ${TABLE}.status ;;
+    required_access_grants: [test]
+  }
+
+
   parameter: number_of_results {
     type: number
     allowed_value: {
