@@ -37,7 +37,7 @@ explore: billion_orders {
 
 access_grant: test {
   user_attribute: company_id
-  allowed_values: ["90600"]
+  allowed_values: ["90600", "2024"]
 }
 
 # To create more sophisticated Explores that involve multiple views, you can use the join parameter.

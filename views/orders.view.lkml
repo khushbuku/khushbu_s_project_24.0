@@ -22,6 +22,19 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: date_formatted {
+    sql: ${created_date} ;;
+    html:{{ rendered_value | date: "%b %Y" }};;
+
+  }
+
+  dimension: dater {
+    type: duration_month
+    sql: ${created_month} ;;
+    html:{{ rendered_value | date: "%b %Y" }};;
+
+  }
+
     # Here's what a typical dimension looks like in LookML.
     # A dimension is a groupable field that can be used to filter query results.
     # This dimension will be called "Status" in Explore.
@@ -47,8 +60,22 @@ view: orders {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
-    required_access_grants: [test]
   }
+  dimension: old {
+    sql: "CANCELLED"  ;;
+}
+dimension: new {
+  sql: "PENDING" ;;
+}
+
+dimension: ml_version_filter {
+  type: string
+  suggest_dimension: status
+  sql:
+  CASE WHEN ${status} = "CANCELLED" THEN ${old}
+  ELSE ${new}
+  END ;;
+}
 
   parameter: number_of_results {
     type: number
