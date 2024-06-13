@@ -21,6 +21,13 @@ persist_with: khushbu_s_project_default_datagroup
 
 # To see the Explore you’re building, navigate to the Explore menu and select an Explore under "Khushbu S Project"
 
+access_grant: access_test {
+  user_attribute: assessment
+  allowed_values: ["123"]
+}
+
+
+explore: add_a_unique_name_1712748926 {}
 explore: billion_orders {
   join: orders {
     type: left_outer
@@ -35,10 +42,6 @@ explore: billion_orders {
   }
 }
 
-access_grant: test {
-  user_attribute: company_id
-  allowed_values: ["90600", "2024"]
-}
 
 # To create more sophisticated Explores that involve multiple views, you can use the join parameter.
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
@@ -55,6 +58,7 @@ explore: dummy {}
 explore: employees {}
 
 explore: events {
+  required_access_grants: [access_test]
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
@@ -125,6 +129,7 @@ explore: inventory_items {
 }
 
 explore: orders {
+  required_access_grants: [access_test]
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -133,6 +138,7 @@ explore: orders {
 }
 
 explore: order_items {
+  required_access_grants: [access_test]
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;

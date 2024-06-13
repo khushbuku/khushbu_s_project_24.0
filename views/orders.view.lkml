@@ -58,6 +58,7 @@ view: orders {
   }
 
   dimension: status {
+    required_access_grants: [access_test]
     type: string
     sql: ${TABLE}.status ;;
   }

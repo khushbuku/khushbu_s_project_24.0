@@ -78,7 +78,7 @@ view: order_items {
   measure: total_sale_price {
     type: sum
     sql: ${sale_price} ;;
-    html: <p> ↙ {{rendered_value}} </p>;;
+   # html: <p> ↙ {{rendered_value}} </p>;;
      }
   measure: average_sale_price {
     type: average
