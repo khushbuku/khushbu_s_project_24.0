@@ -129,7 +129,10 @@ explore: inventory_items {
 }
 
 explore: orders {
-  required_access_grants: [access_test]
+  always_filter: {
+    filters: [orders.status: "COMPLETED"]
+  }
+  #required_access_grants: [access_test]
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -138,9 +141,7 @@ explore: orders {
 }
 
 explore: order_items {
-  always_filter: {
-    filters: [orders.status: "COMPLETED"]
-  }
+
   required_access_grants: [access_test]
   join: orders {
     type: left_outer
