@@ -138,6 +138,9 @@ explore: orders {
 }
 
 explore: order_items {
+  always_filter: {
+    filters: [orders.status: "COMPLETED"]
+  }
   required_access_grants: [access_test]
   join: orders {
     type: left_outer
