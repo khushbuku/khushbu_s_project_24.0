@@ -12,6 +12,10 @@ view: products {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    link: {
+      label: "Contact Warehouse Support"
+      url: "mailto:warehouse@altostrat.com"
+    }
   }
     # Here's what a typical dimension looks like in LookML.
     # A dimension is a groupable field that can be used to filter query results.
@@ -37,6 +41,7 @@ view: products {
   dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;
+
   }
 
   dimension: rank {

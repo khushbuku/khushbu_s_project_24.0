@@ -141,6 +141,9 @@ explore: orders {
 }
 
 explore: order_items {
+  always_filter: {
+    filters: [orders.status: "CANCELLED"]
+  }
 
   required_access_grants: [access_test]
   join: orders {

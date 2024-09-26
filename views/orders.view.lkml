@@ -22,6 +22,17 @@ view: orders {
     sql: ${TABLE}.created_at ;;
   }
 
+  dimension: year_to_date {
+    type: date_time
+    sql: ${created_year} ;;
+  }
+
+  dimension: year_da {
+    type: date_raw
+    sql:FORMAT(${created_year}, 'dd-MM-yyyy');;
+
+  }
+
   dimension: date_formatted {
     sql: ${created_date} ;;
     html:{{ rendered_value | date: "%b %Y" }};;
